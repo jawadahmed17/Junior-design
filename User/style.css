@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+:root{
+    --text-color:#FFFBEB;
+    --steadfast:#495579;
+    --boatswain:#263159;
+    --azulado:#251749;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins',sans-serif;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    scroll-padding-top: 1rem;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .2s linear;   
+}
+header{
+    display: block;
+    width:100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+.container{
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 35px;
+}
+#menu-icon{
+    font-size: 20px;
+    cursor: pointer;
+    color:var(--text-color);
+    display: none;
+}
+.logo{
+    color: black;
+    font-weight: 700;
+    font-size: 2rem;
+}
+.logo i{
+    padding-right: 1rem;
+    color: black;
+}
+.logo span{
+    color: maroon;
+}
+.navbar{
+    display: flex;
+    column-gap: 2rem;
+}
+.navbar a
+{
+    text-transform:uppercase ;
+    font-weight: 500;
+    font-size: 1rem;
+    color:black;
+}
+
+.navbar a:hover,.navbar .active
+{
+    color:var(--boatswain);
+    border-bottom: 3px solid var(--azulado);
+}
+#search-icon{
+    font-size: 24px;
+    cursor: pointer;
+
+}
+.search-box{
+    position: absolute;
+    top: 110%;
+    right: 0;
+    left: 0;
+    background:white;
+    box-shadow: 4px 4px 20px rgb(15 54 55 /10%);
+    border: 1px solid var(--boatswain);
+    border-radius: 0.5rem;
+    clip-path: circle(0% at 100% 0%);
+}
+.search-box.active{
+    clip-path: circle(144% at 100% 0%);
+}
+.search-box input{
+    width: 100%;
+    padding: 20px;
+    border:none;
+    outline:none;
+    background: transparent;
+    font-size: medium;
+}
+
+#login-btn a i{
+    font-size: 1.2rem;
+    color: black;
+    cursor: pointer;
+}
+#login-btn a i:hover{
+    color:var(--steadfast);
+}
+
+  
