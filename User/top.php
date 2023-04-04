@@ -45,14 +45,26 @@ while($row=mysqli_fetch_assoc($cat_res)){
                 <li class="dropdown"><a href="#">Sell Car</a></li>
                 <li class="dropdown"><a href="#">Compare Car</a></li>
                 <li class="drobdown"><a href="#">Contact</a></li>
-            </ul>
-            <i class='bx bx-search-alt' id="search-icon"></i> 
-            <div class="search-box container">
+            
+             <i class='bx bx-search-alt' id="search-icon"></i> 
+             <div class="search-box container">
                 <input type="search" name="" id="search-box" placeholder="Search here....">
-            </div> 
+             </div> 
            
-            <div id="login-btn">
-                <a href="login.html" class="user"><i class="far fa-user"></i></a>
+             <div id="login-btn">
+
+             <?php if(isset($_SESSION['USER_LOGIN'])){
+               echo '<li class="dropdown"><a href="profile.php" class="user"><i class="far fa-user"></i></a>
+                      <ul class="dropdown-content">
+                        <a href="logout.php">Logout</a>
+                        </ul>
+                        </li>';
+               }
+               else{
+               echo '<li class="dropdown"><a href="login.html">Login</a></li>';
+              }
+             ?>
+            </ul>
             </div>    
         </div>
     </header>
@@ -92,7 +104,7 @@ header{
     z-index: 100;
 }
 .container{
-    max-width: 1200px;
+    max-width: 1086px;
     margin-left: auto;
     margin-right: auto;
 }
