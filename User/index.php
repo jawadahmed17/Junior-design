@@ -20,7 +20,7 @@ section{
     padding: 2rem 9%;
 }
 .home{
-    padding: 0;    
+    padding:0;    
 }
 .home .home-slider .box{
     min-height: 100vh;
