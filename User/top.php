@@ -42,7 +42,10 @@ while($row=mysqli_fetch_assoc($cat_res)){
                      <?php } ?>
                     </ul>
                 </li>
-                <li class="dropdown"><a href="sellcar.php">Sell Car</a></li>
+                <?php if(isset($_SESSION['USER_LOGIN'])){
+                    echo '<li class="dropdown"><a href="sellcar.php">Sell Car</a></li>';
+                   }
+                ?>
                 <li class="dropdown"><a href="comparecar.php">Compare Car</a></li>
                 <li class="drobdown"><a href="contact.php">Contact</a></li>
             
@@ -52,10 +55,11 @@ while($row=mysqli_fetch_assoc($cat_res)){
              </div> 
            
              <div id="login-btn">
-
              <?php if(isset($_SESSION['USER_LOGIN'])){
-               echo '<li class="dropdown"><a href="profile.php" class="user"><i class="far fa-user"></i></a>
+
+               echo '<li class="dropdown"><i class="far fa-user"></i></a>
                       <ul class="dropdown-content">
+                       <a href="profile.php">Dashboard</a>
                         <a href="logout.php">Logout</a>
                         </ul>
                         </li>';
@@ -99,7 +103,7 @@ header{
     display: block;
     width:100%;
     position: fixed;
-    background:white;
+    /*background:white;*/
     top: 0;
     left: 0;
     z-index: 100;
