@@ -9,7 +9,7 @@ require('top.php');
                 <div class="content">
                     <h2>Find your dream car</h2>
                     <div class="button">
-                        <a href="#" class="btn">Explore now</a>
+                        <a href="cars.php" class="btn">Explore now</a>
                     </div>
                 </div>
             </div>

@@ -1,19 +1,23 @@
 <?php
 require('top.php');
-$category_id=mysqli_real_escape_string($con,$_GET['ID']);
-
+if(isset($_GET['id'])){
+    $car_id=mysqli_real_escape_string($con,$_GET['id']);
+    if($car_id>0){
+        $get_car=get_car($con,'','',$car_id);
+    }
+}
 ?>
 
 <section class="car" id="car">
     <div class="box-container">
         <?php
-          $get_car=get_car($con,'',$category_id);
+          $get_car=get_car($con,'','','');
           foreach($get_car as $row){
         ?>
         <div class="box">
-          <div class="content">
-          <img src="<?php echo CAR_IMAGE_SITE_PATH.$row['image1']?>" alt="image1">
+         <img src="<?php echo CAR_IMAGE_SITE_PATH.$row['image1']?>" alt="image1">
           <h3><?php echo $row['model_name']?></h3>  
+        
           <div class="price">TK <?php echo $row['price']?></div>
           <input type='hidden' name='price' value= <?php echo $row['price']?>>
           <?php if(isset($_SESSION['USER_LOGIN'])){
@@ -23,9 +27,7 @@ $category_id=mysqli_real_escape_string($con,$_GET['ID']);
             }else{
              echo '<h4>please login first</h4>';
             }
-           ?>
-          </div>
-          
+        ?>
         </div>
 
         <?php } ?> 
@@ -35,14 +37,14 @@ $category_id=mysqli_real_escape_string($con,$_GET['ID']);
 <style>
  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
-  :root{
+:root{
    --text-color:#FFFBEB;
    --steadfast:#495579;
    --boatswain:#263159;
    --azulado:#251749;
-  }
+}
 
-  *{
+*{
    margin: 0;
    padding: 0;
    font-family: 'poppins',sans-serif;
@@ -55,58 +57,57 @@ $category_id=mysqli_real_escape_string($con,$_GET['ID']);
    text-decoration: none;
    text-transform: capitalize;
    transition: all .2s linear;   
-   }
-  section{
+}
+section{
    display: flex;
    flex-wrap:wrap;
    width:100%;
    justify-content:center;
    align-items:center;
    margin:50px 0;
+   justify-content:center;
+   align-items: center;
    min-height: 100vh;
    overflow-x:hidden;
    width: 100%;
-  }
-  .box{
-   width: fit-content;
-   margin:20px;
-   box-sizing: border-box;
+}
+h3{
+   text-align:center;
+}
+.price{
+   text-align:center;
+}
+h4{
+   text-align:center;
+}
+.box{
+   width:fit-content;
+   height:fit-content;
+   margin:15px;
+   box-sizing:border-box;
+   float:left;
+   text-align:center;
    border-radius:20px;
-   float: left;
-   text-align: center;
-   text-decoration: none;
    cursor:pointer;
-   padding-top: 5px;
-   box-shadow: 0 14px 28px rgba(0,0,0,0.25),
-    0 10px 10px rgba(0,0,0,0.22) ;
-   transition: .4s;
+   padding-top: 10px;
+   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+   transition:.4s;
    background:#f2f2f2; 
-  }
-  .box:hover{
-    box-shadow:0 3px 6px rgba(0,0,0,0.16),0 3px 6px rgba(0,0,0,0.23);
-    transform:translate(0px,-8px);
-  }
-  img{
+}
+.box:hover{
+   box-shadow:0 3px 6px rgba(0,0,0,0.16),0 3px 6px rgba(0,0,0,0.23);
+   transform:translate(0px,-8px);
+}
+ img{
    width:200px;
    height:200px;
-   margin-left: 15px;
-   margin-right: 15px;
-   margin-top: 15px;
    text-align:center;
-   display: block;
-  }
+   margin:0 auto;
+   display:block;
+}
 
-  h3{
-    text-align:center;
-  }
-   .price{
-   text-align:center;
-   }
-   h4{
-   text-align:center;
-   }
-  .button 
-  {
+.button 
+ {
     position: relative;
     background: var(--azulado);
     border:0;
@@ -120,13 +121,13 @@ $category_id=mysqli_real_escape_string($con,$_GET['ID']);
     border-bottom-right-radius:20px;
     border-bottom-left-radius:20px;
     cursor: pointer;
-   }
-  .button a{
-    color: #FFF;
-  }
-  .button:hover
-  {
-     background: var(--azulado);
-     letter-spacing: 0.25em;
-   }
+ }
+ .button a{
+   color: #FFF;
+ }
+ .button :hover
+ {
+   background: var(--clr);
+    letter-spacing: 0.25em;
+ }
 </style>    

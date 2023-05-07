@@ -1,10 +1,11 @@
+<!-- This file contains the code for the top navigation bar-->
 <?php
 require('connection.php');
 require('functions.php');
-$cat_res=mysqli_query($con,"select * from category where status=1 order by type_name asc");
-$cat_arr=array();
-while($row=mysqli_fetch_assoc($cat_res)){
-    $cat_arr[]=$row;
+$category_id_res=mysqli_query($con,"select * from category where status=1 order by type_name asc"); 
+$category_id_arr=array();
+while($row=mysqli_fetch_assoc($category_id_res)){
+    $category_id_arr[]=$row;
 }
 ?>
 
@@ -28,17 +29,17 @@ while($row=mysqli_fetch_assoc($cat_res)){
                 <li class="dropdown"><a href="#">New Car</a>
                   <ul class="dropdown-content">
                      <?php 
-                       foreach($cat_arr as $list){ ?>
-                      <a href="category.php ? ID=<?php echo $list['id']?>"><?php echo $list['type_name'] ?></a>
+                       foreach($category_id_arr as $list){ ?>
+                      <a href="category.php ? ID=<?php echo $list['id']?>"><?php echo $list['type_name'] ?> </a>
                      <?php } ?>
                      </ul>
                 </li>
                   
                 <li class="dropdown"><a href="#">Used Car</a>
-                <ul class="dropdown-content">
+                    <ul class="dropdown-content">
                      <?php 
-                       foreach($cat_arr as $list){ ?>
-                      <a href="category.php ? ID=<?php echo $list['id']?>"><?php echo $list['type_name'] ?></a>
+                       foreach($category_id_arr as $list){ ?>
+                      <a href="category.php ? ID=<?php echo $list['id']?>"><?php echo $list['type_name'] ?> </a>
                      <?php } ?>
                     </ul>
                 </li>

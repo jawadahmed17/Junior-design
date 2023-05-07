@@ -12,6 +12,7 @@ $image1='';
 $image2='';
 $image3='';
 $price='';
+$bid='';
 $msg='';
 $image_required='required';
 
@@ -24,6 +25,7 @@ if(isset($_POST['submit'])){
    $condition_id=get_safe_value($con,$_POST['condition_id']);
    $description=get_safe_value($con,$_POST['description']);
 	$price=get_safe_value($con,$_POST['price']);
+   $bid=get_safe_value($con,$_POST['bid']);
 	$res=mysqli_query($con,"select registration_number from `car` where registration_number='$registration_number'");
 	$check=mysqli_num_rows($res);
 	if($check>0){
@@ -37,8 +39,8 @@ if(isset($_POST['submit'])){
 		move_uploaded_file($_FILES['image2']['tmp_name'],'../media/'.$image2);
       $image3=$_FILES['image3']['name'];
 		move_uploaded_file($_FILES['image3']['tmp_name'],'../media/'.$image3);
-		mysqli_query($con,"INSERT INTO `car`(`user_id`,`type`,`model_name`,`model_number`,`registration_number`,`brand_name`,`condition`,`description`,`image1`,`image2`,`image3`,`price`)
-       VALUES ('$user_id','$category_id','$model_name','$model_number','$registration_number','$brand_name','$condition_id','$description','$image1','$image2','$image3','$price')");
+		mysqli_query($con,"INSERT INTO `car`(`user_id`,`type`,`model_name`,`model_number`,`registration_number`,`brand_name`,`condition`,`description`,`image1`,`image2`,`image3`,`price`,`bid`)
+       VALUES ('$user_id','$category_id','$model_name','$model_number','$registration_number','$brand_name','$condition_id','$description','$image1','$image2','$image3','$price','$bid')");
 		#header('location:index.php');
 		die();
 	}
@@ -102,6 +104,10 @@ if(isset($_POST['submit'])){
                     <div class="inputbox">
                         <input type="number" name="price" required value="<?php echo $price?>" >
                         <label for="">Price</label>
+                    </div>
+                    <div class="inputbox">
+                        <input type="number" name="bid" required value="<?php echo $price?>" >
+                        <label for="">Start Bid</label>
                     </div>
 
                     <label id="image_label" for="inputfile">Image</label>
