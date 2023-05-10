@@ -15,19 +15,19 @@ if(isset($_GET['id'])){
           foreach($get_car as $row){
         ?>
         <div class="box">
-         <img src="<?php echo CAR_IMAGE_SITE_PATH.$row['image1']?>" alt="image1">
-          <h3><?php echo $row['model_name']?></h3>  
+          <a href="carbid.php?id=<?php echo $row['id']?>">
+           <img src="<?php echo CAR_IMAGE_SITE_PATH.$row['image1']?>" alt="image1">
+          <h3><?php echo $row['model_name']?></h3> </a>
         
           <div class="price">TK <?php echo $row['price']?></div>
           <input type='hidden' name='price' value= <?php echo $row['price']?>>
           <?php if(isset($_SESSION['USER_LOGIN'])){
-            echo "  <div class='button'>
-                       <a href='carbid.php'>BID</a>
+             echo "  <div class='button'>
+                       <a href='carbid.php ? id={$row['id']}'>BID</a>
                     </div>";
-            }else{
+               }else{
              echo '<h4>please login first</h4>';
-            }
-        ?>
+            }?>
         </div>
 
         <?php } ?> 
@@ -64,12 +64,11 @@ section{
    width:100%;
    justify-content:center;
    align-items:center;
-   margin:50px 0;
+   margin:85px 0;
    justify-content:center;
    align-items: center;
-   min-height: 100vh;
+   min-height: 70vh;
    overflow-x:hidden;
-   width: 100%;
 }
 h3{
    text-align:center;
@@ -101,8 +100,10 @@ h4{
  img{
    width:200px;
    height:200px;
+   margin-left: 15px;
+   margin-right: 15px;
+   margin-top: 15px;
    text-align:center;
-   margin:0 auto;
    display:block;
 }
 

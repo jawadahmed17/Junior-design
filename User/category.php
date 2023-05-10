@@ -12,13 +12,14 @@ $category_id=mysqli_real_escape_string($con,$_GET['ID']);
         ?>
         <div class="box">
           <div class="content">
-          <img src="<?php echo CAR_IMAGE_SITE_PATH.$row['image1']?>" alt="image1">
-          <h3><?php echo $row['model_name']?></h3>  
+          <a href="carbid.php?id=<?php echo $row['id']?>">
+           <img src="<?php echo CAR_IMAGE_SITE_PATH.$row['image1']?>" alt="image1">
+          <h3><?php echo $row['model_name']?></h3> </a>  
           <div class="price">TK <?php echo $row['price']?></div>
           <input type='hidden' name='price' value= <?php echo $row['price']?>>
           <?php if(isset($_SESSION['USER_LOGIN'])){
             echo "  <div class='button'>
-                       <a href='carbid.php'>BID</a>
+            <a href='carbid.php ? id={$row['id']}'>BID</a>
                     </div>";
             }else{
              echo '<h4>please login first</h4>';
@@ -62,8 +63,7 @@ $category_id=mysqli_real_escape_string($con,$_GET['ID']);
    width:100%;
    justify-content:center;
    align-items:center;
-   margin:50px 0;
-   min-height: 100vh;
+   margin:80px 0px;
    overflow-x:hidden;
    width: 100%;
   }
