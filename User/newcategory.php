@@ -7,7 +7,7 @@ $category_id=mysqli_real_escape_string($con,$_GET['ID']);
 <section class="car" id="car">
     <div class="box-container">
         <?php
-          $get_car=get_car($con,'',$category_id);
+          $get_car=get_car($con,'',$category_id,'','1');
           foreach($get_car as $row){
         ?>
         <div class="box">

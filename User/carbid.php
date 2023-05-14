@@ -3,6 +3,8 @@ require('top.php');
 $car_id=mysqli_real_escape_string($con,$_GET['id']);
 
 $bider_id=$_SESSION['USER_ID'];
+$bider_name=$_SESSION['USER_NAME'];
+$bider_phone=$_SESSION['USER_PHONE'];
 $owner_id='';
 $starting_bid='';
 $bid_amount='';
@@ -11,10 +13,16 @@ if(isset($_POST['submit'])){
   $owner_id=get_safe_value($con,$_POST['owner']);
   $starting_bid=get_safe_value($con,$_POST['starting_bid']);
   $bid_amount=get_safe_value($con,$_POST['bid']);
-  mysqli_query($con,"insert into `bid`(`car_id`,`owner_id`,`bider_id`,`starting_bid`,`bid_amount`)
-                values ('$car_id','$owner_id','$bider_id','$starting_bid','$bid_amount')");
-                die();
-              }
+  if($bid_amount>$starting_bid){
+    mysqli_query($con,"insert into `bid`(`car_id`,`owner_id`,`bider_id`,`bider_name`,`bider_phone`,`starting_bid`,`bid_amount`)
+    values ('$car_id','$owner_id','$bider_id','$bider_name','$bider_phone','$starting_bid','$bid_amount')");
+    die();
+  }
+  else{
+    echo "Bid amount is less than the Starting amount";
+  }
+   
+}
 
 ?>
 <section>
@@ -39,22 +47,21 @@ if(isset($_POST['submit'])){
                  <input type='hidden' name='car_id' value= <?php echo $row['id']?>>
                  <input type='hidden' name='owner' value= <?php echo $row['user_id']?>>
                  <input type='hidden' name='starting_bid' value= <?php echo $row['start_bid']?>>
-                 <h3>Model_name:<?php echo $row['model_name']?></h3>
-                 <h3>Model_number:<?php echo $row['model_number']?></h3>
-                 <h3>brand_name:<?php echo $row['brand_name']?></h3>
+                 <h3>Model Name : <?php echo $row['model_name']?></h3>
+                 <h3>Model Number : <?php echo $row['model_number']?></h3>
+                 <h3>brand Name : <?php echo $row['brand_name']?></h3>
                  <?php
-                   $condition_id=$row['condition'];
                    $condition_res=mysqli_query($con,"select name from car_condition where id={$row['condition']}");
                    $condition_arr=array();
                     while($condition=mysqli_fetch_assoc($condition_res)){
                      $condition_arr[]=$condition;
                     } 
                     foreach($condition_arr as $list){ ?>
-                      <h3>condition:<?php echo $list['name'] ?></h3>
+                      <h3>Condition : <?php echo $list['name'] ?></h3>
                   <?php } ?>
-                 <h3>Description:<?php echo $row['description']?></h3>
-                 <h3>price:<?php echo $row['price']?></h3>
-                 <h3>Starting bidding amount:<?php echo $row['start_bid']?></h3>
+                 <h3>Description : <?php echo $row['description']?></h3>
+                 <h3>Price : <?php echo $row['price']?></h3>
+                 <h3>Starting bidding amount : <?php echo $row['start_bid']?></h3>
               </div>
               
               <div class="inputbox">

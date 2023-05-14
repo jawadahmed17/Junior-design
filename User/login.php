@@ -12,6 +12,7 @@ if($check_user>0){
 	$_SESSION['USER_LOGIN']='yes';
 	$_SESSION['USER_ID']=$row['id'];
 	$_SESSION['USER_NAME']=$row['username'];
+	$_SESSION['USER_PHONE']=$row['phone'];
 	header('Location:index.php');
 }else{
 	echo "wrong";

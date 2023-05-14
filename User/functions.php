@@ -17,13 +17,19 @@ function get_safe_value($con,$str){
 	}
 }
 
-function get_car($con,$limit='',$cat_id='',$car_id=''){
+function get_car($con,$limit='',$cat_id='',$car_id='',$condition_id='',$user_id=''){
 	$sql="select car.*,category.type_name from car,category where car.status=1";
 	if($cat_id!=''){
 		$sql.=" and car.type=$cat_id ";
 	}
 	if($car_id!=''){
 		$sql.=" and car.id=$car_id ";
+	}
+	if($condition_id!=''){
+		$sql.=" and car.condition=$condition_id ";
+	}
+	if($user_id!=''){
+		$sql.=" and car.user_id=$user_id ";
 	}
 	$sql.=" and car.type=category.id ";
 	$sql.=" order by car.id desc";
@@ -39,7 +45,6 @@ function get_car($con,$limit='',$cat_id='',$car_id=''){
 	}
 	return $data;
 }
-	
-	
+		
 ?>
 

@@ -30,7 +30,7 @@ while($row=mysqli_fetch_assoc($category_id_res)){
                   <ul class="dropdown-content">
                      <?php 
                        foreach($category_id_arr as $list){ ?>
-                      <a href="category.php ? ID=<?php echo $list['id']?>"><?php echo $list['type_name'] ?> </a>
+                      <a href="newcategory.php ? ID=<?php echo $list['id']?>"><?php echo $list['type_name'] ?> </a>
                      <?php } ?>
                      </ul>
                 </li>
@@ -39,7 +39,7 @@ while($row=mysqli_fetch_assoc($category_id_res)){
                     <ul class="dropdown-content">
                      <?php 
                        foreach($category_id_arr as $list){ ?>
-                      <a href="category.php ? ID=<?php echo $list['id']?>"><?php echo $list['type_name'] ?> </a>
+                      <a href="usedcategory.php ? ID=<?php echo $list['id']?>"><?php echo $list['type_name'] ?> </a>
                      <?php } ?>
                     </ul>
                 </li>
@@ -57,11 +57,13 @@ while($row=mysqli_fetch_assoc($category_id_res)){
            
              <div id="login-btn">
              <?php if(isset($_SESSION['USER_LOGIN'])){
+                $name=$_SESSION['USER_NAME'];
 
-               echo '<li class="dropdown"><i class="far fa-user"></i></a>
+               echo '<li class="dropdown"><i class="far fa-user"></i>
                       <ul class="dropdown-content">
-                       <a href="profile.php">Dashboard</a>
-                        <a href="logout.php">Logout</a>
+                       <a href="profile.php">Edit Profile</a>
+                       <a href="listedcar.php">Listed Car</a>
+                       <a href="logout.php">Logout</a>
                         </ul>
                         </li>';
                }
@@ -104,7 +106,6 @@ header{
     display: block;
     width:100%;
     position: fixed;
-    /*background:white;*/
     top: 0;
     left: 0;
     z-index: 100;
@@ -114,7 +115,7 @@ header{
     max-width: 1086px;
     margin-left: auto;
     margin-right: auto;
-    background-color: #FFF;
+   background-color: #FFF;
 }
 .nav{
     display: flex;
