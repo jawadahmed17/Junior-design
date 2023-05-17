@@ -1,7 +1,7 @@
 <?php
 require('top.php');
 $car_id=mysqli_real_escape_string($con,$_GET['id']);
-
+$msg='';
 $bider_id=$_SESSION['USER_ID'];
 $bider_name=$_SESSION['USER_NAME'];
 $bider_phone=$_SESSION['USER_PHONE'];
@@ -26,21 +26,22 @@ if(isset($_POST['submit'])){
 
 ?>
 <section>
-    <div class="container1 flex">
+    <div class="container1 flex" id="blur">
       <div class="left">
+      <?php
+					$get_car=get_car($con,'','',$car_id);
+					foreach($get_car as $row){
+				?>
         <div class="main_image">
-          <img src="images/car1.jpg" class="slide">
+          <img src="<?php echo CAR_IMAGE_SITE_PATH.$row['image1']?>" alt="image1" class="slide">
         </div>
         <div class="option flex">
-          <img src="images/car1.jpg" onclick="img('images/car1.jpg')">
-          <img src="images/car6.jpg" onclick="img('images/car6.jpg')">
-          <img src="images/login_background.jpg" onclick="img('images/login_background.jpg')">
+          <img src="<?php echo CAR_IMAGE_SITE_PATH.$row['image1']?>" alt="image1"onclick="img('<?php echo CAR_IMAGE_SITE_PATH.$row['image1']?>')">
+          <img src="<?php echo CAR_IMAGE_SITE_PATH.$row['image2']?>" alt="image1" onclick="img('<?php echo CAR_IMAGE_SITE_PATH.$row['image2']?>')">
+          <img src="<?php echo CAR_IMAGE_SITE_PATH.$row['image3']?>" alt="image1" onclick="img('<?php echo CAR_IMAGE_SITE_PATH.$row['image3']?>')">
         </div>
       </div>
-      <?php
-							$get_car=get_car($con,'','',$car_id);
-							foreach($get_car as $row){
-							?>
+
       <div class="right">
            <form action="" method="POST">
               <div class="description">
@@ -65,11 +66,11 @@ if(isset($_POST['submit'])){
               </div>
               
               <div class="inputbox">
-                <input type="number" name="bid" required value="<?php echo $bid_amount?>" >
+                <input type="number" name="bid" required value="<?php echo $bid_amount?>">
                 <label for="">Your Bid</label>
               </div>
                <div class="button">
-                <input type="submit" name="submit" value="Place Bid" style="--clr:#3443ecde">
+                <input type="submit" name="submit" value="Place Bid" style="--clr:#3443ecde" onclick="toggle()">
                </div>
                <div class="comment">
                   <p>*bidding amount must be more than starting amount</p>
@@ -78,6 +79,10 @@ if(isset($_POST['submit'])){
         </form>
         </div>
         <?php } ?>
+    </div>
+    <div id="popup">
+      <h3>hi</h3>
+      <a href="#" onclick="toggle()">ok</a>
     </div>
   </section>
 <style>
@@ -115,6 +120,12 @@ if(isset($_POST['submit'])){
       background: white;
       box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.3);
     }
+    .container1#blur.active{
+      filter: blur(20px);
+      pointer-events: none;
+      user-select: none;
+    }
+    
     .left{
       box-sizing: border-box;
       width: 50%;
@@ -133,8 +144,8 @@ if(isset($_POST['submit'])){
       display: flex;
     }
    .main_image {
-     width: auto;
-     height: auto;
+     width: 400px;
+     height: 400px;
    }
 
    .option img {
@@ -240,13 +251,6 @@ if(isset($_POST['submit'])){
 }
 </style>
 <script>
-   /* function img(anything){
-        document.querySelector('.slide').src=anything;
-    }
-    function change(change){
-        const line =document.querySelector('.main_image');
-        line.style.background=change;
-    }*/
     function img(anything) {
       document.querySelector('.slide').src = anything;
     }
@@ -254,5 +258,9 @@ if(isset($_POST['submit'])){
     function change(change) {
       const line = document.querySelector('.home');
       line.style.background = change;
+    }
+    function toggle(){
+      var blur=document.getElementById('blur');
+      blur.classList.toggle('active');
     }
 </script>

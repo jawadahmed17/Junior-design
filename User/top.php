@@ -47,7 +47,6 @@ while($row=mysqli_fetch_assoc($category_id_res)){
                     echo '<li class="dropdown"><a href="sellcar.php">Sell Car</a></li>';
                    }
                 ?>
-                <li class="dropdown"><a href="comparecar.php">Compare Car</a></li>
                 <li class="drobdown"><a href="contact.php">Contact</a></li>
             
              <i class='bx bx-search-alt' id="search-icon"></i> 

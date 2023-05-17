@@ -39,7 +39,7 @@ if(isset($_POST['submit'])){
 		move_uploaded_file($_FILES['image2']['tmp_name'],'../media/'.$image2);
       $image3=$_FILES['image3']['name'];
 		move_uploaded_file($_FILES['image3']['tmp_name'],'../media/'.$image3);
-		mysqli_query($con,"INSERT INTO `car`(`user_id`,`type`,`model_name`,`model_number`,`registration_number`,`brand_name`,`condition`,`description`,`image1`,`image2`,`image3`,`price`,`bid`)
+		mysqli_query($con,"INSERT INTO `car`(`user_id`,`type`,`model_name`,`model_number`,`registration_number`,`brand_name`,`condition`,`description`,`image1`,`image2`,`image3`,`price`,`start_bid`)
        VALUES ('$user_id','$category_id','$model_name','$model_number','$registration_number','$brand_name','$condition_id','$description','$image1','$image2','$image3','$price','$bid')");
 		#header('location:index.php');
 		die();
