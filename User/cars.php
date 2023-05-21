@@ -3,7 +3,7 @@ require('top.php');
 if(isset($_GET['id'])){
     $car_id=mysqli_real_escape_string($con,$_GET['id']);
     if($car_id>0){
-        $get_car=get_car($con,'','',$car_id);
+        $get_car=get_car($con,'','',$car_id,'','');
     }
 }
 ?>
@@ -70,13 +70,14 @@ section{
    min-height: 70vh;
    overflow-x:hidden;
 }
-h3{
+.box h3{
+   text-align:center;
+   color: #251749;
+}
+.box .price{
    text-align:center;
 }
-.price{
-   text-align:center;
-}
-h4{
+.box h4{
    text-align:center;
 }
 .box{
@@ -97,7 +98,7 @@ h4{
    box-shadow:0 3px 6px rgba(0,0,0,0.16),0 3px 6px rgba(0,0,0,0.23);
    transform:translate(0px,-8px);
 }
- img{
+.box img{
    width:200px;
    height:200px;
    margin-left: 15px;

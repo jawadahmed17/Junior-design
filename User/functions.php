@@ -10,6 +10,7 @@ function prx($arr){
 	die();
 }
 
+#fuction for fetching data
 function get_safe_value($con,$str){
 	if($str!=''){
 		$str=trim($str);
@@ -17,6 +18,7 @@ function get_safe_value($con,$str){
 	}
 }
 
+#function for geting car data from database
 function get_car($con,$limit='',$cat_id='',$car_id='',$condition_id='',$user_id=''){
 	$sql="select car.*,category.type_name from car,category where car.status=1";
 	if($cat_id!=''){
@@ -37,9 +39,12 @@ function get_car($con,$limit='',$cat_id='',$car_id='',$condition_id='',$user_id=
 	{
 		$sql.=" limit $limit";
 	}
-
+    
+	#executing the final sql query
 	$res=mysqli_query($con,$sql);
+	#declaring array variable
 	$data=array();
+	#fetching data from database
 	while($row=mysqli_fetch_assoc($res)){
 		$data[]=$row;
 	}

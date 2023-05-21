@@ -70,7 +70,7 @@ if(isset($_POST['submit'])){
                 <label for="">Your Bid</label>
               </div>
                <div class="button">
-                <input type="submit" name="submit" value="Place Bid" style="--clr:#3443ecde" onclick="toggle()">
+                <input type="submit" name="submit" value="Place Bid" style="--clr:#3443ecde" >
                </div>
                <div class="comment">
                   <p>*bidding amount must be more than starting amount</p>
@@ -79,10 +79,6 @@ if(isset($_POST['submit'])){
         </form>
         </div>
         <?php } ?>
-    </div>
-    <div id="popup">
-      <h3>hi</h3>
-      <a href="#" onclick="toggle()">ok</a>
     </div>
   </section>
 <style>
@@ -259,8 +255,5 @@ if(isset($_POST['submit'])){
       const line = document.querySelector('.home');
       line.style.background = change;
     }
-    function toggle(){
-      var blur=document.getElementById('blur');
-      blur.classList.toggle('active');
-    }
+    
 </script>
