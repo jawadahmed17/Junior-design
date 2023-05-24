@@ -14,7 +14,7 @@ $image3='';
 $price='';
 $bid='';
 $msg='';
-$image_required='required';
+
 
 if(isset($_POST['submit'])){
 	$model_name=get_safe_value($con,$_POST['model_name']);
@@ -51,6 +51,7 @@ if(isset($_POST['submit'])){
             <div class="form-value">
                 <form  method="POST" enctype="multipart/form-data">
                     <h2>Car Details</h2>
+                    
                     <div class="inputbox">
                         <input type="text" name="model_name" required value="<?php echo $model_name?>" >
                         <label for="">Model Name</label>
@@ -112,7 +113,7 @@ if(isset($_POST['submit'])){
 
                     <label id="image_label" for="inputfile">Image</label>
                     <div class="inputbox">
-                        <input type="file" id="input-file1" name="image1" accept="image/*" onchange="showPreview1(event)" <?php echo $image_required?>">
+                    <input type="file" id="input-file1" name="image1" accept="image/*" onchange="showPreview1(event)" required value="<?php echo $image1?>">
                     </div>
                     <div class="preview1">
                        <img src="" alt="" id="file-preview1">

@@ -104,7 +104,7 @@ if(isset($_POST['submit'])){
 
     .row form h3{
         font-size:2rem;
-        text align:center;
+        text-align:center;
     }
     .inputbox{
       position: relative;

@@ -2,7 +2,7 @@
 <?php
 require('connection.php');
 require('functions.php');
-$category_id_res=mysqli_query($con,"select * from category where status=1 order by type_name asc"); 
+$category_id_res=mysqli_query($con,"select * from category where status=1 order by id asc"); 
 $category_id_arr=array();
 while($row=mysqli_fetch_assoc($category_id_res)){
     $category_id_arr[]=$row;
@@ -99,7 +99,7 @@ while($row=mysqli_fetch_assoc($category_id_res)){
     list-style: none;
     text-decoration: none;
     text-transform: capitalize;
-    transition: all .2s linear;   
+    transition: all .2s linear;
 }
 header{
     display: block;
@@ -114,7 +114,7 @@ header{
     max-width: 1086px;
     margin-left: auto;
     margin-right: auto;
-   background-color: #FFF;
+    background-color: #FFF;
 }
 .nav{
     display: flex;
