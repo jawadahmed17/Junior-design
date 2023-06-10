@@ -114,7 +114,7 @@ header{
     max-width: 1086px;
     margin-left: auto;
     margin-right: auto;
-  /*  background-color: #FFF;*/
+   background-color: #FFF;
 }
 .nav{
     display: flex;

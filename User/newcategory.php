@@ -14,7 +14,7 @@ $category_id=mysqli_real_escape_string($con,$_GET['ID']);
           <div class="content">
           <a href="carbid.php?id=<?php echo $row['id']?>">
            <img src="<?php echo CAR_IMAGE_SITE_PATH.$row['image1']?>" alt="image1">
-          <h3><?php echo $row['model_name']?></h3> </a>  
+           <h3><?php echo $row['brand_name']?> <?php echo $row['model_name']?></h3> </a>  
           <div class="price">TK <?php echo $row['price']?></div>
           <input type='hidden' name='price' value= <?php echo $row['price']?>>
           <?php if(isset($_SESSION['USER_LOGIN'])){
